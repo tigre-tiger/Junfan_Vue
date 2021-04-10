@@ -100,6 +100,7 @@
 </template>
 <script>
   import { mapGetters } from 'vuex'
+  import request from '../../utils/request';
   export default {
     data() {
       return {
@@ -136,7 +137,7 @@
       getList() {
         // 查询列表
         this.listLoading = true;
-        this.api({
+        return request({
           url: "/mother/list",
           method: "post",
           data: this.listQuery
@@ -173,7 +174,7 @@
         this.dialogFormVisible = true;
         },
      updateMother() {
-         this.api({
+         return request({
           url: "/mother/update",
           method: "post",
           data: this.mother
@@ -187,7 +188,7 @@
         })
      },
      addMother() {
-         this.api({
+         return request({
           url: "/mother/insert",
           method: "post",
           data: this.mother
@@ -209,7 +210,7 @@
       },
      removeMother($index) {
        const mother = this.list[$index];
-         this.api({
+         return request({
           url: "/mother/delete",
           method: "get",
           params: { mid: mother.mid }

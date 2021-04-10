@@ -100,8 +100,8 @@
 
 
     <el-pagination
-      :current-page="listQuery.pageNum"
-      :page-size="listQuery.pageRow"
+      :current-page="listQuery.pageIndex"
+      :page-size="listQuery.pageSize"
       :total="totalCount"
       :page-sizes="[10, 20, 50, 100]"
       layout="total, sizes, prev, pager, next, jumper"
@@ -440,8 +440,8 @@ import checkPermission from '@/utils/permission';
         list: [], // 表格的数据
         listLoading: false, // 数据加载等待动画
         listQuery: {
-          pageNum: 1, // 页码
-          pageRow: 50, // 每页条数
+          pageIndex: 1, // 页码
+          pageSize: 50, // 每页条数
           sku: '',
           name: '',
           warehouseid: ''
@@ -511,48 +511,44 @@ import checkPermission from '@/utils/permission';
         supplier: {},
         suppliers: [],
         tempProduct: {
-          productid: '',
-          skucode: '',
-          cnname: '',
-          enname: '',
-          registeredlength: '',
-          registeredwidth: '',
-          registeredheight: '',
+          productID: '',
+          skuCode: '',
+          cnName: '',
+          enName: '',
+          registeredLength: '',
+          registeredWidth: '',
+          registeredHeight: '',
           branded: '',
-          brandedname: '',
-          model: '',
-          displaypageurl: '',
+          brandedName: '',
+          displayPageUrl: '',
           remark: '',
-          inportdeclaredvalue: '',
-          exportdeclaredvalue: '',
+          inportDeclaredvalue: '',
+          exportDeclaredvalue: '',
           battery: '',
-          exportcountry: '',
-          inporcountry: '',
-          registeredweight: '',
-          isnew: '',
-          warehouseid: '',
-          warehousename: '',
-          headwaytype: '',
+          registeredWeight: '',
+          isNew: '',
+          warehouseID: '',
+          warehouseName: '',
+          headwayType: '',
           productlevel: '',
-          salegroupid: '',
-          salegroupname: '',
-          productgroupid: '',
-          productgroupname: '',
-          isactive: '',
-          isdelete: '',
-          isplus: '',
-          registeredvolume: '',
+          salegroupID: '',
+          salegroupName: '',
+          productgroupID: '',
+          productgroupName: '',
+          isActive: '',
+          isDelete: '',
+          isPlus: '',
+          registeredVolume: '',
           imgurl: '',
           cost: '',
           mid: '',
           mcode: '',
-          supplierid: '',
-          suppliername: '',
+          supplierID: '',
+          supplierName: '',
           supplierlink1: '',
           supplierlink2: '',
           supplierlink3: '',
           deliverytime: '',
-          registerlink: '',
           countries: [],
           productSell: {}
         }
@@ -686,28 +682,28 @@ this.tempProduct.salegroupid = value.salegroupid;
           data: this.listQuery
         }).then(data => {
           this.listLoading = false;
-          this.list = data.list;
+          this.list = data.records;
           this.totalCount = data.totalCount;
         })
       },
       handleSizeChange(val) {
         // 改变每页数量
-        this.listQuery.pageRow = val
+        this.listQuery.pageSize = val
         this.handleFilter();
       },
       handleCurrentChange(val) {
         // 改变页码
-        this.listQuery.pageNum = val
+        this.listQuery.pageIndex = val
         this.getList();
       },
       handleFilter() {
         // 查询事件
-        this.listQuery.pageNum = 1
+        this.listQuery.pageIndex = 1
         this.getList()
       },
       getIndex($index) {
         // 表格序号
-        return (this.listQuery.pageNum - 1) * this.listQuery.pageRow + $index + 1
+        return (this.listQuery.pageIndex - 1) * this.listQuery.pageSize + $index + 1
       },
       radioClick1() {
         if (this.tempProduct.battery == 'Y') {
@@ -742,7 +738,6 @@ this.tempProduct.salegroupid = value.salegroupid;
         this.tempProduct.registeredwidth = '';
         this.tempProduct.branded = '';
         this.tempProduct.brandedname = '';
-        this.tempProduct.model = '';
         this.tempProduct.displaypageurl = '';
         this.tempProduct.remark = '';
         this.tempProduct.battery = '';
@@ -784,9 +779,10 @@ this.tempProduct.salegroupid = value.salegroupid;
         this.tempProduct.registeredlength = product.registeredlength;
         this.tempProduct.registeredwidth = product.registeredwidth;
         this.tempProduct.registeredheight = product.registeredheight;
+
+
         this.tempProduct.branded = product.branded;
         this.tempProduct.brandedname = product.brandedname;
-        this.tempProduct.model = product.model;
         this.tempProduct.displaypageurl = product.displaypageurl;
         this.tempProduct.remark = product.remark;
         this.tempProduct.battery = product.battery;

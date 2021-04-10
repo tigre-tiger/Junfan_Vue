@@ -351,6 +351,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import request from '../../utils/request';
     export default {
         name: "Newproduct",
       data() {
@@ -476,7 +477,7 @@
       },
       methods: {
         getAllWarehouses() {
-          this.api({
+          return request({
             url: "/warehouse/list",
             method: "get"
           }).then(data => {
@@ -485,7 +486,7 @@
         },
          // 获取供应商
        getSupplier() {
-        this.api({
+        return request({
           url: "/supplier/list",
           method: "get"
         }).then(data => {
@@ -493,7 +494,7 @@
         })
       },
       addNewSku() {
-            this.api({
+            return request({
             url: "/productNew/uploadProduct",
             method: "post",
             data: this.product
@@ -525,7 +526,7 @@
         getList() {
           // 查询列表
           this.listLoading = true;
-          this.api({
+          return request({
             url: "/productNew/list",
             method: "post",
             data: this.listQuery
@@ -633,7 +634,7 @@
             this.innerVisible = true;
         },
         createNewproduct() {
-          this.api({
+          return request({
             url: "/productNew/add",
             method: "post",
             data: this.productnew
@@ -645,7 +646,7 @@
         updateNewproduct() {
           // 修改用户信息
           const _vue = this;
-          this.api({
+          return request({
             url: "/productNew/update",
             method: "post",
             data: this.productnew
@@ -666,7 +667,7 @@
           })
         },
         submitNewproduct() {
-          this.api({
+          return request({
             url: "productNew/submit",
             method: "get",
             params: { productID: this.productnew.productid }
@@ -676,7 +677,7 @@
           })
         },
         verifyNewproduct() {
-          this.api({
+          return request({
             url: "/productNew/verify",
             method: "get",
             params: { productID: this.productnew.productid }
@@ -686,7 +687,7 @@
           })
         },
         rejectNewproduct() {
-          this.api({
+          return request({
             url: "/productNew/reject",
             method: "get",
             params: { productID: this.productnew.productid }

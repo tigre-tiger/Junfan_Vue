@@ -95,7 +95,7 @@
 </template>
 <script>
   import { mapGetters } from 'vuex'
-
+  import request from '../../utils/request';
 
 
   export default {
@@ -142,7 +142,7 @@
       getList() {
         // 查询列表
         this.listLoading = true;
-        this.api({
+        return request({
           url: "/supplier/listSupplier",
           method: "post",
           data: this.listQuery
@@ -187,7 +187,7 @@
         this.dialogFormVisible = true;
         },
      updateSupplier() {
-         this.api({
+         return request({
           url: "/supplier/update",
           method: "post",
           data: this.supplier
@@ -201,7 +201,7 @@
         })
      },
      addSupplier() {
-         this.api({
+         return request({
           url: "/supplier/add",
           method: "post",
           data: this.supplier
@@ -231,7 +231,7 @@
       },
      removeSupplier($index) {
        const supplier = this.list[$index];
-         this.api({
+         return request({
           url: "/supplier/delete",
           method: "get",
           params: { supplierID: supplier.supplierid }
