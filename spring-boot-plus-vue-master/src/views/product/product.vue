@@ -57,7 +57,7 @@
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="仓库" prop="warehousename" width="120" />
+      <el-table-column align="center" label="仓库" prop="warehouseName" width="120" />
       <el-table-column align="center" label="图片" width="90">
         <template slot-scope="scope">
           <el-image
@@ -67,20 +67,20 @@
           />
         </template>
       </el-table-column>
-      <el-table-column align="center" label="产品sku" prop="skucode" width="120" />
-      <el-table-column align="center" label="中文名称" prop="cnname" width="120" />
-      <el-table-column align="center" label="英文名称" prop="enname" width="120" />
+      <el-table-column align="center" label="产品sku" prop="skuCode" width="120" />
+      <el-table-column align="center" label="中文名称" prop="cnName" width="120" />
+      <el-table-column align="center" label="英文名称" prop="enName" width="120" />
       <el-table-column align="center" label="采购价" prop="cost" width="80" />
-      <el-table-column align="center" label="长度(cm)" prop="registeredlength" width="80" />
-      <el-table-column align="center" label="宽度(cm)" prop="registeredwidth" width="80" />
-      <el-table-column align="center" label="高度(cm)" prop="registeredheight" width="80" /> 
-      <el-table-column align="center" label="重量(g)" prop="registeredweight" width="80" /> 
-      <el-table-column align="center" label="头程类型" prop="headwaytype" width="80" />
+      <el-table-column align="center" label="长度(cm)" prop="registeredLength" width="80" />
+      <el-table-column align="center" label="宽度(cm)" prop="registeredWidth" width="80" />
+      <el-table-column align="center" label="高度(cm)" prop="registeredHeight" width="80" /> 
+      <el-table-column align="center" label="重量(g)" prop="registeredWeight" width="80" /> 
+      <el-table-column align="center" label="头程类型" prop="headwayType" width="80" />
       <el-table-column align="center" label="交货期" prop="deliverytime" width="80" />
       <el-table-column align="center" label="产品等级" prop="productlevel" width="80" /> 
-      <el-table-column align="center" label="销售组" prop="salegroupname" width="120" />
-      <el-table-column align="center" label="产品组" prop="productgroupname" width="120" /> 
-      <el-table-column align="center" label="供应商" prop="suppliername" width="120" />
+      <el-table-column align="center" label="销售组" prop="salegroupName" width="120" />
+      <el-table-column align="center" label="产品组" prop="productgroupName" width="120" /> 
+      <el-table-column align="center" label="供应商" prop="supplierName" width="120" />
       <el-table-column label="电池" align="center" prop="scope.row.battery">
         <template slot-scope="scope">
           <el-tag
@@ -88,7 +88,7 @@
           >{{ scope.row.battery==='Y'?'带电':'不带电' }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="新品" align="center" prop="scope.row.isnew">
+      <el-table-column label="新品" align="center" prop="scope.row.isNew">
         <template slot-scope="scope">
           <el-tag
             :type="scope.row.isNew==='Y'?'success':''"
@@ -138,23 +138,23 @@
         <el-row :gutter="40">
           <el-col :span="6">
             <el-form-item label="商品编码" required>
-              <el-input v-model="tempProduct.skucode" type="text" />
+              <el-input v-model="tempProduct.skuCode" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="中文名称" required>
-              <el-input v-model="tempProduct.cnname" type="text" />
+              <el-input v-model="tempProduct.cnName" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="英文名称" required>
-              <el-input v-model="tempProduct.enname" type="text" />
+              <el-input v-model="tempProduct.enName" type="text" />
             </el-form-item>
           </el-col>
                    
           <el-col :span="6">
             <el-form-item label="品牌">
-              <el-input v-model="tempProduct.brandedname" type="text" />
+              <el-input v-model="tempProduct.brandedName" type="text" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -163,7 +163,7 @@
           <el-col :span="24">
             <el-form-item label="商品特性">
               <el-radio v-model="tempProduct.battery" label="Y" @click.native.prevent="radioClick1(Y)">带电池</el-radio>
-              <el-radio v-model="tempProduct.isplus" label="Y" @click.native.prevent="radioClick2(Y)">带插座</el-radio>
+              <el-radio v-model="tempProduct.isPlus" label="Y" @click.native.prevent="radioClick2(Y)">带插座</el-radio>
               <el-radio v-model="tempProduct.branded" label="Y" @click.native.prevent="radioClick3(Y)">品牌</el-radio>
             </el-form-item>
           </el-col>
@@ -171,22 +171,17 @@
         <el-row :gutter="40">
           <el-col :span="6">
             <el-form-item label="注册长(cm)">
-              <el-input v-model="tempProduct.registeredlength" type="text" />
+              <el-input v-model="tempProduct.registeredLength" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="注册宽(cm)">
-              <el-input v-model="tempProduct.registeredwidth" type="text" />
+              <el-input v-model="tempProduct.registeredWidth" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="注册高(cm)">
-              <el-input v-model="tempProduct.registeredheight" type="text" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
-            <el-form-item label="注册重量(g)">
-              <el-input v-model="tempProduct.registeredweight" type="text" />
+              <el-input v-model="tempProduct.registeredHeight" type="text" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -198,13 +193,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="6">
-            <el-form-item label="申报链接">
-              <el-input v-model="tempProduct.registerlink" type="text" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
             <el-form-item label="头程类型" required>
-              <el-select v-model="tempProduct.headwaytype" placeholder="请选择">
+              <el-select v-model="tempProduct.headwayType" placeholder="请选择">
                 <el-option
                   v-for="item in headways"
                   :key="item.value"
@@ -232,7 +222,7 @@
         <el-row :gutter="40">
           <el-col :span="6">
             <el-form-item label="销售组" required>
-              <el-select v-model="tempProduct.salegroupname" value-key="salegroupid" placeholder="请选择" @change="changesalegroup">
+              <el-select v-model="tempProduct.salegroupName" value-key="salegroupid" placeholder="请选择" @change="changesalegroup">
                 <el-option
                   v-for="item in salegroups"
                   :key="item.salegroupid"
@@ -244,7 +234,7 @@
           </el-col>
           <el-col :span="6">
             <el-form-item label="产品组" required>
-              <el-select v-model="tempProduct.productgroupname" value-key="productgroupid" placeholder="请选择" @change="changeproductgroup">
+              <el-select v-model="tempProduct.productgroupName" value-key="productgroupid" placeholder="请选择" @change="changeproductgroup">
                 <el-option
                   v-for="item in productgroups"
                   :key="item.productgroupid"
@@ -256,7 +246,7 @@
           </el-col>
           <el-col :span="6">
             <el-form-item label="目的仓库" required>
-              <el-select v-model="tempProduct.warehousename" value-key="warehouseid" placeholder="请选择" @change="changewarehouse">
+              <el-select v-model="tempProduct.warehouseName" value-key="warehouseid" placeholder="请选择" @change="changewarehouse">
                 <el-option
                   v-for="item in warehouses"
                   :key="item.warehouseid"
@@ -268,7 +258,7 @@
           </el-col>
           <el-col :span="6">
             <el-form-item label="供应商" required>
-              <el-select v-model="tempProduct.suppliername" clearable value-key="supplierID" filterable placeholder="请选择" @change="changesupplier">
+              <el-select v-model="tempProduct.supplierName" clearable value-key="supplierID" filterable placeholder="请选择" @change="changesupplier">
                 <el-option
                   v-for="item in suppliers"
                   :key="item.supplierID"
@@ -291,20 +281,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="6">
-            <el-form-item label="补货母代码">
-              <el-select v-model="tempProduct.mname" value-key="mid" clearable filterable placeholder="请选择" @change="changeMother">
-                <el-option
-                  v-for="item in mothers"
-                  :key="item.mid"
-                  :label="item.mname"
-                  :value="item"
-                />
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
             <el-form-item label="参考链接">
-              <el-input v-model="tempProduct.displaypageurl" type="text" />
+              <el-input v-model="tempProduct.displayPageUrl" type="text" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -556,11 +534,10 @@ import checkPermission from '@/utils/permission';
     },
     created() {
       this.getList();
-      // this.getAllWarehouses();
-      // this.getSupplier();
-      // this.getSaleGroup();
-      // this.getProductGroup();
-      // this.getAllMotherCode();
+      this.getAllWarehouses();
+      this.getSupplier();
+      this.getSaleGroup();
+      this.getProductGroup();
     },
     computed: {
       ...mapGetters([
@@ -589,9 +566,9 @@ import checkPermission from '@/utils/permission';
     addCountry() {
       var countries = this.tempProduct.countries;
       var code = this.countryCode;
-      if (countries != []) {
+      if (countries !== []) {
         for (var i = 0; i < countries.length; i++) {
-        if (countries[i].countrycode == code) {
+        if (countries[i].countrycode === code) {
           return;
         }
       }
@@ -608,33 +585,32 @@ import checkPermission from '@/utils/permission';
     },
     changeMother(value) {
         this.tempProduct.mid = value.mid;
-        this.tempProduct.mname = value.mname;
       },
 changeproductgroup(value) {
-        this.tempProduct.productgroupid = value.productgroupid;
-        this.tempProduct.productgroupname = value.productgroupname;
+        this.tempProduct.productID = value.productgroupid;
+        this.tempProduct.productgroupName = value.productgroupname;
       },
 
       changesalegroup(value) {
-this.tempProduct.salegroupid = value.salegroupid;
-        this.tempProduct.salegroupname = value.salegroupname;
+        this.tempProduct.salegroupID = value.salegroupid;
+        this.tempProduct.salegroupName = value.salegroupname;
       },
       changewarehouse(value) {
-        this.tempProduct.warehouseid = value.warehouseid;
-        this.tempProduct.warehousename = value.warehousename;
+        this.tempProduct.warehouseID = value.warehouseid;
+        this.tempProduct.warehouseName = value.warehousename;
       },
 
 
        changesupplier(value) {
-        this.tempProduct.supplierid = value.supplierID;
-        this.tempProduct.suppliername = value.supplierName;
+        this.tempProduct.supplierID = value.supplierID;
+        this.tempProduct.supplierName = value.supplierName;
       },
       getAllWarehouses() {
         return request({
           url: "/warehouse/list",
           method: "get"
         }).then(data => {
-          this.warehouses = data.list;
+          this.warehouses = data.data;
         })
       },
       getAllMotherCode() {
@@ -642,7 +618,7 @@ this.tempProduct.salegroupid = value.salegroupid;
           url: "/mother/list",
           method: "get"
         }).then(data => {
-          this.mothers = data.list;
+          this.mothers = data.data;
         })
       },
       // 获取供应商
@@ -651,7 +627,7 @@ this.tempProduct.salegroupid = value.salegroupid;
           url: "/supplier/list",
           method: "get"
         }).then(data => {
-          this.suppliers = data.list;
+          this.suppliers = data.data;
         })
       },
       // 获取销售组
@@ -660,7 +636,7 @@ this.tempProduct.salegroupid = value.salegroupid;
           url: "/salegroup/list",
           method: "get"
         }).then(data => {
-          this.salegroups = data.list;
+          this.salegroups = data.data;
         })
       },
       // 获取产品组
@@ -669,21 +645,21 @@ this.tempProduct.salegroupid = value.salegroupid;
           url: "/productgroup/list",
           method: "get"
         }).then(data => {
-          this.productgroups = data.list;
+          this.productgroups = data.data;
         })
       },
   
       getList() {
         // 查询列表
         this.listLoading = true;
-        return request({
+        request({
           url: "/product/list",
           method: "post",
           data: this.listQuery
         }).then(data => {
           this.listLoading = false;
-          this.list = data.records;
-          this.totalCount = data.totalCount;
+          this.list = data.data.records;
+          this.totalCount = data.data.totalCount;
         })
       },
       handleSizeChange(val) {
@@ -706,21 +682,21 @@ this.tempProduct.salegroupid = value.salegroupid;
         return (this.listQuery.pageIndex - 1) * this.listQuery.pageSize + $index + 1
       },
       radioClick1() {
-        if (this.tempProduct.battery == 'Y') {
+        if (this.tempProduct.battery === 'Y') {
       this.tempProduct.battery = 'N';
     } else {
       this.tempProduct.battery = 'Y';
     }
       },
        radioClick2() {
-       if (this.tempProduct.isplus == 'Y') {
-      this.tempProduct.isplus = 'N';
+       if (this.tempProduct.isPlus === 'Y') {
+      this.tempProduct.isPlus = 'N';
     } else {
-      this.tempProduct.isplus = 'Y';
+      this.tempProduct.isPlus = 'Y';
     }
       },
        radioClick3() {
-         if (this.tempProduct.branded == 'Y') {
+         if (this.tempProduct.branded === 'Y') {
       this.tempProduct.branded = 'N';
     } else {
       this.tempProduct.branded = 'Y';
@@ -728,97 +704,92 @@ this.tempProduct.salegroupid = value.salegroupid;
       },
       showCreate() {
         // 显示新增对话框
-         this.tempProduct.productid = '';
-        this.tempProduct.skucode = '';
-        this.tempProduct.cnname = '';
-        this.tempProduct.enname = '';
-        this.tempProduct.registeredlength = '';
-        this.tempProduct.registeredweight = '';
-        this.tempProduct.registeredheight = '';
-        this.tempProduct.registeredwidth = '';
+         this.tempProduct.productID = '';
+        this.tempProduct.skuCode = '';
+        this.tempProduct.cnName = '';
+        this.tempProduct.enName = '';
+        this.tempProduct.registeredLength = '';
+        this.tempProduct.registeredHeight = '';
+        this.tempProduct.registeredWidth = '';
         this.tempProduct.branded = '';
-        this.tempProduct.brandedname = '';
-        this.tempProduct.displaypageurl = '';
+        this.tempProduct.brandedName = '';
+        this.tempProduct.displayPageUrl = '';
         this.tempProduct.remark = '';
         this.tempProduct.battery = '';
-        this.tempProduct.registeredweight = '';
-        this.tempProduct.isnew = '';
-        this.tempProduct.warehouseid = '';
-        this.tempProduct.warehousename = '';
-        this.tempProduct.headwaytype = '';
+        this.tempProduct.isNew = '';
+        this.tempProduct.warehouseID = '';
+        this.tempProduct.warehouseName = '';
+        this.tempProduct.headwayType = '';
         this.tempProduct.productlevel = '';
-        this.tempProduct.salegroupid = '';
-        this.tempProduct.salegroupname = '';
-        this.tempProduct.productgroupid = '';
-        this.tempProduct.isactive = '';
-        this.tempProduct.isdelete = '';
-        this.tempProduct.isplus = '';
-        this.tempProduct.registeredvolume = '';
+        this.tempProduct.salegroupID = '';
+        this.tempProduct.salegroupName = '';
+        this.tempProduct.productgroupID = '';
+        this.tempProduct.isActive = '';
+        this.tempProduct.isDelete = '';
+        this.tempProduct.isPlus = '';
+        this.tempProduct.registeredVolume = '';
         this.tempProduct.imgurl = '';
         this.tempProduct.cost = '';
         this.tempProduct.mid = '';
         this.tempProduct.mcode = '';
-        this.tempProduct.supplierid = '';
-        this.tempProduct.suppliername = '';
+        this.tempProduct.supplierID = '';
+        this.tempProduct.supplierName = '';
         this.tempProduct.supplierlink1 = '';
         this.tempProduct.supplierlink2 = '';
         this.tempProduct.supplierlink3 = '';
         this.tempProduct.deliverytime = '';
-        this.tempProduct.registerlink = '';
         this.tempProduct.productSell = {};
-        this.tempProduct.countries = '';
+        this.tempProduct.countries = [];
         this.dialogStatus = "create"
         this.dialogFormVisible = true
       },
       showUpdate($index) {
         const product = this.list[$index];
-        this.tempProduct.productid = product.productid;
-        this.tempProduct.skucode = product.skucode;
-        this.tempProduct.cnname = product.cnname;
-        this.tempProduct.enname = product.enname;
-        this.tempProduct.registeredlength = product.registeredlength;
-        this.tempProduct.registeredwidth = product.registeredwidth;
-        this.tempProduct.registeredheight = product.registeredheight;
-
-
+        this.tempProduct.productID = product.productID;
+        this.tempProduct.skuCode = product.skuCode;
+        this.tempProduct.cnName = product.cnName;
+        this.tempProduct.enName = product.enName;
+        this.tempProduct.registeredLength = product.registeredLength;
+        this.tempProduct.registeredWidth = product.registeredWidth;
+        this.tempProduct.registeredHeight = product.registeredHeight;
         this.tempProduct.branded = product.branded;
-        this.tempProduct.brandedname = product.brandedname;
-        this.tempProduct.displaypageurl = product.displaypageurl;
+        this.tempProduct.brandedName = product.brandedName;
+        this.tempProduct.displayPageUrl = product.displayPageUrl;
         this.tempProduct.remark = product.remark;
         this.tempProduct.battery = product.battery;
-        this.tempProduct.registeredweight = product.registeredweight;
-        this.tempProduct.isnew = product.isnew;
-        this.tempProduct.warehouseid = product.warehouseid;
-        this.tempProduct.productgroupname = product.productgroupname;
-        this.tempProduct.warehousename = product.warehousename;
-        this.tempProduct.headwaytype = product.headwaytype;
+        this.tempProduct.registeredWeight = product.registeredWeight;
+        this.tempProduct.isNew = product.isNew;
+        this.tempProduct.warehouseID = product.warehouseID;
+        this.tempProduct.productgroupName = product.productgroupName;
+        this.tempProduct.warehouseName = product.warehouseName;
+        this.tempProduct.headwayType = product.headwayType;
         this.tempProduct.productlevel = product.productlevel;
-        this.tempProduct.salegroupid = product.salegroupid;
-        this.tempProduct.salegroupname = product.salegroupname;
-        this.tempProduct.productgroupid = product.productgroupid;
-        this.tempProduct.isactive = product.isactive;
-        this.tempProduct.isdelete = product.isdelete;
-        this.tempProduct.isplus = product.isplus;
-        this.tempProduct.registeredvolume = product.registeredvolume;
+        this.tempProduct.salegroupID = product.salegroupID;
+        this.tempProduct.salegroupName = product.salegroupName;
+        this.tempProduct.productgroupID = product.productgroupID;
+        this.tempProduct.isActive = product.isActive;
+        this.tempProduct.isDelete = product.isDelete;
+        this.tempProduct.isPlus = product.isPlus;
+        this.tempProduct.registeredVolume = product.registeredVolume;
         this.tempProduct.imgurl = product.imgurl;
         this.tempProduct.cost = product.cost;
         this.tempProduct.mid = product.mid;
         this.tempProduct.mcode = product.mcode;
-        this.tempProduct.supplierid = product.supplierid;
-        this.tempProduct.suppliername = product.suppliername;
+        this.tempProduct.supplierID = product.supplierID;
+        this.tempProduct.supplierName = product.supplierName;
         this.tempProduct.supplierlink1 = product.supplierlink1;
         this.tempProduct.supplierlink2 = product.supplierlink2;
         this.tempProduct.supplierlink3 = product.supplierlink3;
         this.tempProduct.deliverytime = product.deliverytime;
-        this.tempProduct.registerlink = product.registerlink;
         this.tempProduct.productSell = product.productSell;
         this.tempProduct.countries = product.countries;
         this.dialogStatus = "update"
         this.dialogFormVisible = true
       },
       createProduct() {
+        this.tempProduct.productID = '';
         var countries = this.tempProduct.countries;
-        if (countries == []) {
+        if (countries === []) {
             countries = [];
             const object = {};
             this.$set(object, 'countrycode', 'CN');
@@ -829,7 +800,7 @@ this.tempProduct.salegroupid = value.salegroupid;
         }
         // 添加新产品
         return request({
-          url: "/product/insert",
+          url: "/product/add",
           method: "post",
           data: this.tempProduct
         }).then(() => {
@@ -845,11 +816,10 @@ this.tempProduct.salegroupid = value.salegroupid;
           type: 'warning'
         }).then(() => {
           const product = this.list[$index];
-          const productid = product.productid;
-          console.log(product);
-          _vue.api({
+          const productid = product.productID;
+          request({
             url: "/product/delete",
-            method: "get",
+            method: "post",
             params: {
               productID: productid
             }
@@ -861,13 +831,11 @@ this.tempProduct.salegroupid = value.salegroupid;
       },
       updateProduct() {
         // 修改产品信息
-        const _vue = this;
         return request({
           url: "/product/update",
           method: "post",
           data: this.tempProduct
         }).then(() => {
-          const msg = "修改成功";
           this.dialogFormVisible = false
            this.getList();
         })

@@ -467,8 +467,8 @@
       },
       created() {
         this.getList();
-        this.getAllWarehouses();
-        this.getSupplier();
+        // this.getAllWarehouses();
+        // this.getSupplier();
       },
       computed: {
         ...mapGetters([
